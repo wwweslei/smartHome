@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .main import ligar_luz, ligar_ventilador
 
 
 def home(request):
@@ -6,10 +7,10 @@ def home(request):
 
 
 def luz(request):
-    print("pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp")
+    ligar_luz()
     return render(request, 'core/index.html')
 
 
 def ventilador(request):
-    print('swçjobjabsdfojkbdsojbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbguierrrrrrrrrrrr')
+    ligar_ventilador()
     return render(request, 'core/index.html')
