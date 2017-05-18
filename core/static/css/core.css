@@ -1,0 +1,30 @@
+h1 {
+    color: #FCA205;
+    font-size: 46pt;
+}
+
+h2 {
+    color: #4755E2 ;
+    font-size: 46pt;
+}
+
+body {
+    text-align: center;
+    padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+
+input[type=submit]{
+        background:#006699;
+        color:#ffffff;
+        width:650px;
+        height:240px;
+        text-align:center;
+        font-size: 46pt;
+}
+
+
+
+
+

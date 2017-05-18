@@ -1,12 +1,16 @@
-<!DOCTYPE html>
+{% load staticfiles %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/core.css' %}">
     <title>home</title>
+
 </head>
 <body>
 
-<h1>Em construção</h1>
+<h1>Estamos em construção</h1>
+<h2>Testes luz e ventilador</h2>
 
 <form action="luz" method="get">
 <input type="submit" value="luz" />
@@ -15,6 +19,8 @@
 <form action="ventilador" method="get">
 <input type="submit" value="ventilador" />
 </form>
+
+
 
 </body>
 </html>

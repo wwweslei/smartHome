@@ -6,4 +6,6 @@ db.sqlite3
 core/__pycache__/urls.cpython-35.pyc
 core/__pycache__/views.cpython-35.pyc
 core/__pycache__/main.cpython-35.pyc
+core/__pycache__/
+core/migrations/__pycache__/
 
