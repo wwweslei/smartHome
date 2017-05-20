@@ -1,6 +1,5 @@
 {% load staticfiles %}
-
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/core.css' %}">
@@ -9,7 +8,7 @@
 </head>
 <body>
 
-<h1>Estamos em construção</h1>
+<h1>Porta usb: {{send}}</h1>
 <h2>Testes luz e ventilador</h2>
 
 <form action="luz" method="get">
@@ -21,7 +20,6 @@
 </form>
 
 <img src="{% static 'imagens/python.png' %}" alt="My image"/>
-
 
 </body>
 </html>

@@ -1,16 +1,19 @@
 from django.shortcuts import render
-from .main import ligar_luz, ligar_ventilador
+from .rf433 import send, teste_usb
 
 
 def home(request):
-    return render(request, 'core/index.html')
+    con = teste_usb()
+    return render(request, 'core/index.html', {"send": con})
 
 
 def luz(request):
-    ligar_luz()
-    return render(request, 'core/index.html')
+    con = teste_usb()
+    send('l')
+    return render(request, 'core/index.html', {"send": con})
 
 
 def ventilador(request):
-    ligar_ventilador()
-    return render(request, 'core/index.html')
+    con = teste_usb()
+    send('v')
+    return render(request, 'core/index.html', {"send": con})
