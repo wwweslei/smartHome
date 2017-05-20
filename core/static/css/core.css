@@ -22,9 +22,14 @@ input[type=submit]{
         height:240px;
         text-align:center;
         font-size: 46pt;
+        border: 5px solid #394BA6;
+        border-radius: 6px;
+
 }
 
-
+img {
+    margin-top: 5px;
+}
 
 
 
