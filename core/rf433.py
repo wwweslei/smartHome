@@ -1,38 +1,44 @@
-#!/usr/bin/env python3
+import time
+import sys
+import RPi.GPIO as GPIO
 
-import argparse
-import logging
+a_on = '000101010101010101010101'
+a_off = '1111111111111010101010111'
+b_on = '1111111111101110101011101'
+b_off = '1111111111101110101010111'
+c_on = '1111111111101011101011101'
+c_off = '1111111111101011101010111'
+d_on = '1111111111101010111011101'
+d_off = '1111111111101010111010111'
+short_delay = 0.00045
+long_delay = 0.00090
+extended_delay = 0.0096
 
-from rpi_rf import RFDevice
+NUM_ATTEMPTS = 10
+TRANSMIT_PIN = 23
 
-logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S',
-                    format='%(asctime)-15s - [%(levelname)s] %(module)s: %(message)s',)
+def transmit_code(code):
+    '''Transmit a chosen code string using the GPIO transmitter'''
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(TRANSMIT_PIN, GPIO.OUT)
+    for t in range(NUM_ATTEMPTS):
+        for i in code:
+            if i == '1':
+                GPIO.output(TRANSMIT_PIN, 1)
+                time.sleep(short_delay)
+                GPIO.output(TRANSMIT_PIN, 0)
+                time.sleep(long_delay)
+            elif i == '0':
+                GPIO.output(TRANSMIT_PIN, 1)
+                time.sleep(long_delay)
+                GPIO.output(TRANSMIT_PIN, 0)
+                time.sleep(short_delay)
+            else:
+                continue
+        GPIO.output(TRANSMIT_PIN, 0)
+        time.sleep(extended_delay)
+    GPIO.cleanup()
 
-parser = argparse.ArgumentParser(description='Sends a decimal code via a 433/315MHz GPIO device')
-parser.add_argument('code', metavar='CODE', type=int,
-                    help="Decimal code to send")
-parser.add_argument('-g', dest='gpio', type=int, default=17,
-                    help="GPIO pin (Default: 17)")
-parser.add_argument('-p', dest='pulselength', type=int, default=None,
-                    help="Pulselength (Default: 350)")
-parser.add_argument('-t', dest='protocol', type=int, default=None,
-                    help="Protocol (Default: 1)")
-args = parser.parse_args()
-
-rfdevice = RFDevice(args.gpio)
-rfdevice.enable_tx()
-
-if args.protocol:
-    protocol = args.protocol
-else:
-    protocol = "default"
-if args.pulselength:
-    pulselength = args.pulselength
-else:
-    pulselength = "default"
-logging.info(str(args.code) +
-             " [protocol: " + str(protocol) +
-             ", pulselength: " + str(pulselength) + "]")
-
-rfdevice.tx_code(args.code, args.protocol, args.pulselength)
-rfdevice.cleanup()
+if __name__ == '__main__':
+    for argument in sys.argv[1:]:
+        exec('transmit_code(' + str(argument) + ')')
