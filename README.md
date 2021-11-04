@@ -1,2 +1,2 @@
 # smartHome
-Projeto de automação residencial
+Projeto de automação residencial.
