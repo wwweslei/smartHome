@@ -1,28 +1,19 @@
 {% load staticfiles %}
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/core.css' %}">
-    <title>home</title>
-
-</head>
-<body>
-
-<h1>Porta usb: {{send}}</h1>
-<h2>Testes luz e ventilador</h2>
-
-<form action="luz" method="get">
-<input type="submit" value="luz" />
-</form>
-
-<form action="ventilador" method="get">
-<input type="submit" value="ventilador" />
-</form>
-
-<img src="{% static 'imagens/python.png' %}" alt="My image"/>
-<a href="tradutor">tradução</a>
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/core.css' %}">
+        <title>Home</title>
+    </head>
+    <body>
+        <h1>Porta usb: {{ send }}</h1>
+        <h2>Teste luz e ventilador</h2>
+        <form action="luz" method="get">
+            <input type="submit" value="luz" />
+        </form>
+        <form action="ventilador" method="get">
+            <input type="submit" value="ventilador" />
+        </form>
+        <img src="{% static 'imagens/python.png' %}" alt="logo python"/>
+    </body>
 </html>
-
-
